@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // Tema claro
-  static ThemeData lightTheme = FlexThemeData.light(
+   
+ static ThemeData lightTheme = FlexThemeData.light(
     scheme: FlexScheme.greenM3,
   surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
   blendLevel: 7,
@@ -13,6 +14,8 @@ class AppTheme {
     useTextTheme: true,
     useM2StyleDividerInM3: true,
     alignedDropdown: true,
+    fabUseShape: true,
+    fabAlwaysCircular: true,
     useInputDecoratorThemeInDialogs: true,
   ),
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
@@ -21,7 +24,6 @@ class AppTheme {
   // To use the Playground font, add GoogleFonts package and uncomment
     // fontFamily: GoogleFonts.notoSans().fontFamily,
   );
-
   // Tema oscuro
   static ThemeData darkTheme = FlexThemeData.dark(
     scheme: FlexScheme.greenM3,
@@ -32,6 +34,8 @@ class AppTheme {
     useTextTheme: true,
     useM2StyleDividerInM3: true,
     alignedDropdown: true,
+    fabUseShape: true,
+    fabAlwaysCircular: true,
     useInputDecoratorThemeInDialogs: true,
   ),
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
@@ -41,6 +45,5 @@ class AppTheme {
     // fontFamily: GoogleFonts.notoSans().fontFamily,
   );
 
- 
   // static ThemeMode themeMode = ThemeMode.system; En caso de querer usar el tema por defecto del teléfono ;)
 }
