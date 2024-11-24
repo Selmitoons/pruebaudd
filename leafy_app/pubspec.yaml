@@ -31,7 +31,7 @@ flutter:
     - lib/assets/images/playstore.png
     - lib/assets/images/Arapanto.jpeg
     - lib/assets/images/usuario.jpeg
-  
+    - lib/assets/images/fertilizante.png
   fonts:
     - family: Montserrat-Regular #Nombre de la fuente
       fonts:

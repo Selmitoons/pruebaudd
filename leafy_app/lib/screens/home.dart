@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:leafy_app/components/appbar.dart';
+import 'package:leafy_app/components/appbarbusqueda.dart';
 import 'package:leafy_app/components/formulario.dart';
 import 'package:leafy_app/components/tabs.dart';
 
@@ -54,6 +55,10 @@ class _MantenedorState extends State<Mantenedor> {
   }
 }
 
+
+
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -62,33 +67,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _searchText = ''; // Texto del buscador
+  String _searchText = ''; // Texto actual del buscador
+  bool _isSearching = false; // Estado del buscador
+  final TextEditingController _searchController = TextEditingController(); // Controlador del TextField
+
+  @override
+  void dispose() {
+    _searchController.dispose(); // Limpia el controlador cuando se destruye el widget
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, 'Buscar Plantas'),
+      appBar: buildAppBarbusqueda(
+        context,
+        'Buscar Plantas',
+        isSearching: _isSearching,
+        searchController: _searchController,
+        onSearchToggle: () {
+          setState(() {
+            _isSearching = !_isSearching;
+            if (!_isSearching) {
+              _searchController.clear();
+              _searchText = ''; // Reinicia el texto de búsqueda
+            }
+          });
+        },
+        onSearchTextChanged: (value) {
+          setState(() {
+            _searchText = value.toLowerCase();
+          });
+        },
+      ),
       body: Column(
         children: [
-          // Campo de búsqueda
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              onChanged: (value) {
-                setState(() {
-                  _searchText = value.toLowerCase(); // Actualiza el texto del buscador
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'Buscar plantasp...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-              ),
-            ),
-          ),
-          // Stream de datos y lista filtrada
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance.collection('usuarios').snapshots(),
@@ -131,6 +144,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text('${usuario['telefono']}'),
+                      trailing: Icon(
+                        Icons.yard, // Usamos el ícono de Yard
+                        color: Colors.green, // Puedes personalizar el color
+                        size: 30, // Ajusta el tamaño si es necesario
+                      ),
                     );
                   },
                 );
@@ -179,6 +197,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
 
 
 class SearchScreen extends StatelessWidget {
@@ -263,6 +283,7 @@ class BlogScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 12.0),
           Container(
+            // Usuario
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
@@ -287,14 +308,14 @@ class BlogScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Nombre del Usuario',
+                      'Maida Villarroel',
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Descripción breve',
+                      'Fertilizando con cáscara de huevo',
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey[600],
@@ -305,12 +326,154 @@ class BlogScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 12.0),
+          Container(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              width: double.infinity,
+              // Publicacion
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                      'Publicado 04/07/2024  -  hace 20 minutos', // Informacion post
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Color.fromARGB(255, 120, 120, 120),
+                      )),
+                  const SizedBox(height: 4.0),
+                  const Text(
+                      // Post
+                      'Este tip me lo dio hace mucho tiempo mi mamá y siempre me ha funcionado genial a ustedes que tal les va con este método?',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color.fromARGB(255, 102, 102, 102),
+                      )),
+                  const SizedBox(height: 10.0),
+                  Container(
+                    // Imagen
+                    height: 350.0,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('lib/assets/images/fertilizante.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
+                ],
+              )),
+          const SizedBox(height: 12.0),
+          Container(
+            // Likes y comentarios
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            width: double.infinity,
+            child: const Row(
+              // Likes y comentarios
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  // Likes
+                  Icons.favorite, // Icono de corazón
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fill: 0,
+                  size: 24,
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  // Cantidad de likes
+                  '10',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(width: 16.0),
+                Icon(
+                  // Icono comentarios
+                  Icons.comment, // Icono de comentario
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  size: 24.0, // Tamaño del icono
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  // Cantidad de comentarios
+                  '9',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          Container(
+            // Usuario 1 - comentario
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Imagen circular
+                Container(
+                  width: 24.0,
+                  height: 24.0,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('lib/assets/images/usuario.jpeg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                    width: 12.0), // Espacio entre la imagen y el texto
+                // Texto al lado
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Publicado  - hace 10 minutos',
+                      style: TextStyle(
+                          fontSize: 10,
+                          color: Color.fromARGB(255, 102, 102, 102)),
+                    ),
+                    Text(
+                      'JM Martinez',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              width: double.infinity,
+              child: const Column(
+                // Comentario
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                      'Tienes que machacarlos y hervirlos y luego riegas con ellos!! es mucho más fácil que la planta absorba los nutrientes!!',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 102, 102, 102))),
+                  Text('Responder     Ver más',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ))
+                ],
+              )),
         ],
       ),
     );
   }
 }
-
 
 
 

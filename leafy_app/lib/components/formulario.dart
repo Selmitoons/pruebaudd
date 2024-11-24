@@ -61,7 +61,7 @@ class _FormularioScreenState extends State<FormularioScreen> {
               children: [
                 const SizedBox(height: 32),
                 const Text(
-                  'Crear nuevo profesor',
+                  'Agregar nueva planta',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 32),
