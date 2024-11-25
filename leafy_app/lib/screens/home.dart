@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:leafy_app/components/appbar.dart';
 import 'package:leafy_app/components/appbarbusqueda.dart';
 import 'package:leafy_app/components/formulario.dart';
-import 'package:leafy_app/components/tabs.dart';
 
 class Mantenedor extends StatefulWidget {
   const Mantenedor({super.key});
@@ -67,13 +66,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String _searchText = ''; // Texto actual del buscador
-  bool _isSearching = false; // Estado del buscador
-  final TextEditingController _searchController = TextEditingController(); // Controlador del TextField
+  String _searchText = '';
+  bool _isSearching = false;
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void dispose() {
-    _searchController.dispose(); // Limpia el controlador cuando se destruye el widget
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -90,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _isSearching = !_isSearching;
             if (!_isSearching) {
               _searchController.clear();
-              _searchText = ''; // Reinicia el texto de búsqueda
+              _searchText = '';
             }
           });
         },
@@ -144,10 +143,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text('${usuario['telefono']}'),
-                      trailing: Icon(
-                        Icons.yard, // Usamos el ícono de Yard
-                        color: Colors.green, // Puedes personalizar el color
-                        size: 30, // Ajusta el tamaño si es necesario
+                      trailing: const Icon(
+                        Icons.yard, 
+                        color: Colors.green, 
+                        size: 30,
                       ),
                     );
                   },
@@ -302,8 +301,7 @@ class BlogScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                    width: 12.0), // Espacio entre la imagen y el texto
-                // Texto al lado
+                    width: 12.0), 
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

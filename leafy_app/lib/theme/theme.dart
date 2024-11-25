@@ -10,7 +10,7 @@ class AppTheme {
   static ThemeData lightTheme = FlexThemeData.light(
     colors: const FlexSchemeColor(
       primary: Color.fromARGB(255, 4, 84, 70),
-      primaryContainer: Color(0xffd0e4ff),
+      primaryContainer: Color.fromARGB(255, 172, 224, 227),
       primaryLightRef: Color(0xff004881),
       secondary: Color(0xffac3306),
       secondaryContainer: Color(0xffffdbcf),
@@ -31,9 +31,12 @@ class AppTheme {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      fabUseShape: true,
+      fabAlwaysCircular: true,
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,
+    
     // Puedes incluir la fuente que prefieras descomentando y configurando:
     // fontFamily: GoogleFonts.notoSans().fontFamily,
   );
@@ -66,6 +69,8 @@ class AppTheme {
       alignedDropdown: true,
       navigationRailUseIndicator: true,
       navigationRailLabelType: NavigationRailLabelType.all,
+      fabUseShape: true,
+      fabAlwaysCircular: true,
     ),
     visualDensity: FlexColorScheme.comfortablePlatformDensity,
     useMaterial3: true,

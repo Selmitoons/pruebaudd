@@ -5,11 +5,11 @@ AppBar buildAppBar(BuildContext context, String title) {
     backgroundColor: Theme.of(context).colorScheme.primary,
     leading: IconButton(
       icon: const Icon(
-        Icons.menu, // Ícono de menú
+        Icons.menu,
         color: Colors.white,
       ),
       onPressed: () {
-        // Acción al presionar el ícono de menú
+       
         Scaffold.of(context).openDrawer();
       },
     ),
@@ -23,21 +23,21 @@ AppBar buildAppBar(BuildContext context, String title) {
     actions: [
       IconButton(
         icon: const Icon(
-          Icons.settings, // Ícono de configuración
+          Icons.settings,
           color: Colors.white,
         ),
         onPressed: () {
-          // Acción al presionar el ícono de configuración
+         
           Navigator.pushNamed(context, '/settings');
         },
       ),
       IconButton(
         icon: const Icon(
-          Icons.more_vert, // Ícono de "más opciones"
+          Icons.more_vert, 
           color: Colors.white,
         ),
         onPressed: () {
-          // Acción al presionar el ícono de "más opciones"
+         
           showModalBottomSheet(
             context: context,
             builder: (context) {
