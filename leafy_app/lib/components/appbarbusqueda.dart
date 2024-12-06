@@ -12,7 +12,7 @@ AppBar buildAppBarbusqueda(
     backgroundColor: Theme.of(context).colorScheme.primary,
     leading: IconButton(
       icon: const Icon(
-        Icons.menu, 
+        Icons.menu, // Ícono de menú
         color: Colors.white,
       ),
       onPressed: () {
@@ -41,11 +41,11 @@ AppBar buildAppBarbusqueda(
           isSearching ? Icons.close : Icons.search,
           color: Colors.white,
         ),
-        onPressed: onSearchToggle, 
+        onPressed: onSearchToggle, // Alterna entre búsqueda y vista normal
       ),
       IconButton(
         icon: const Icon(
-          Icons.more_vert, 
+          Icons.more_vert, // Ícono de "más opciones"
           color: Colors.white,
         ),
         onPressed: () {

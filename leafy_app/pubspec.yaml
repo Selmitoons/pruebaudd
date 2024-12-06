@@ -31,7 +31,13 @@ flutter:
     - lib/assets/images/playstore.png
     - lib/assets/images/Arapanto.jpeg
     - lib/assets/images/usuario.jpeg
+    - lib/assets/images/usuariorespuesta.png
+    - lib/assets/images/usuariodos.png
+    - lib/assets/images/usuariodosrespuesta.png
+    - lib/assets/images/usuariotres.png
     - lib/assets/images/fertilizante.png
+    - lib/assets/images/bonsai.png
+    - lib/assets/images/jade.png
   fonts:
     - family: Montserrat-Regular #Nombre de la fuente
       fonts:

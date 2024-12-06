@@ -3,79 +3,47 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // Tema claro
-
-
-
- 
-  static ThemeData lightTheme = FlexThemeData.light(
-    colors: const FlexSchemeColor(
-      primary: Color.fromARGB(255, 4, 84, 70),
-      primaryContainer: Color.fromARGB(255, 172, 224, 227),
-      primaryLightRef: Color(0xff004881),
-      secondary: Color(0xffac3306),
-      secondaryContainer: Color(0xffffdbcf),
-      secondaryLightRef: Color(0xffac3306),
-      tertiary: Color(0xff006875),
-      tertiaryContainer: Color(0xff95f0ff),
-      tertiaryLightRef: Color(0xff006875),
-      appBarColor: Color(0xffffdbcf),
-      error: Color(0xffba1a1a),
-      errorContainer: Color(0xffffdad6),
-    ),
-    subThemesData: const FlexSubThemesData(
-      interactionEffects: true,
-      tintedDisabledControls: true,
-      useM2StyleDividerInM3: true,
-      inputDecoratorIsFilled: true,
-      inputDecoratorBorderType: FlexInputBorderType.outline,
-      alignedDropdown: true,
-      navigationRailUseIndicator: true,
-      navigationRailLabelType: NavigationRailLabelType.all,
-      fabUseShape: true,
-      fabAlwaysCircular: true,
-    ),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    useMaterial3: true,
-    
-    // Puedes incluir la fuente que prefieras descomentando y configurando:
+   
+ static ThemeData lightTheme = FlexThemeData.light(
+    scheme: FlexScheme.tealM3,
+  surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+  blendLevel: 7,
+  subThemesData: const FlexSubThemesData(
+    blendOnLevel: 10,
+    blendOnColors: false,
+    // ignore: deprecated_member_use
+    useTextTheme: true,
+    useM2StyleDividerInM3: true,
+    alignedDropdown: true,
+    fabUseShape: true,
+    fabAlwaysCircular: true,
+    useInputDecoratorThemeInDialogs: true,
+  ),
+  visualDensity: FlexColorScheme.comfortablePlatformDensity,
+  useMaterial3: true,
+  swapLegacyOnMaterial3: true,
+  // To use the Playground font, add GoogleFonts package and uncomment
     // fontFamily: GoogleFonts.notoSans().fontFamily,
   );
-
-
-
   // Tema oscuro
   static ThemeData darkTheme = FlexThemeData.dark(
-    colors: const FlexSchemeColor(
-      primary: Color.fromARGB(255, 4, 84, 70),
-      primaryContainer: Color(0xff003330),
-      primaryLightRef: Color(0xff004881),
-      secondary: Color(0xff00b2b9),
-      secondaryContainer: Color(0xff004e59),
-      secondaryLightRef: Color(0xffac3306),
-      tertiary: Color(0xff2962ff),
-      tertiaryContainer: Color(0xff00325b),
-      tertiaryLightRef: Color(0xff006875),
-      appBarColor: Color(0xffffdbcf),
-      error: Color(0xffff0000),
-      errorContainer: Color(0xff93000a),
-    ),
-    subThemesData: const FlexSubThemesData(
-      interactionEffects: true,
-      tintedDisabledControls: true,
-      blendOnColors: true,
-      useM2StyleDividerInM3: true,
-      inputDecoratorIsFilled: true,
-      inputDecoratorBorderType: FlexInputBorderType.outline,
-      alignedDropdown: true,
-      navigationRailUseIndicator: true,
-      navigationRailLabelType: NavigationRailLabelType.all,
-      fabUseShape: true,
-      fabAlwaysCircular: true,
-    ),
-    visualDensity: FlexColorScheme.comfortablePlatformDensity,
-    useMaterial3: true,
-    swapLegacyOnMaterial3: true,
-    // Puedes incluir la fuente que prefieras descomentando y configurando:
+    scheme: FlexScheme.tealM3,
+  surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+  blendLevel: 13,
+  subThemesData: const FlexSubThemesData(
+    blendOnLevel: 20,
+    // ignore: deprecated_member_use
+    useTextTheme: true,
+    useM2StyleDividerInM3: true,
+    alignedDropdown: true,
+    fabUseShape: true,
+    fabAlwaysCircular: true,
+    useInputDecoratorThemeInDialogs: true,
+  ),
+  visualDensity: FlexColorScheme.comfortablePlatformDensity,
+  useMaterial3: true,
+  swapLegacyOnMaterial3: true,
+  // To use the Playground font, add GoogleFonts package and uncomment
     // fontFamily: GoogleFonts.notoSans().fontFamily,
   );
 
